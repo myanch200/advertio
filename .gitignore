@@ -1,0 +1,5 @@
+env/*
+advertio/SECRETS
+.idea/*
+accounts/migrations/*
+accounts/__init__.py
