@@ -4,3 +4,5 @@ advertio/SECRETS
 .idea/*
 accounts/migrations/*
 accounts/__init__.py
+accounts/__pycache__
+advertio/__pycache__
