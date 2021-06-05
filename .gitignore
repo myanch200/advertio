@@ -6,3 +6,4 @@ accounts/migrations/*
 accounts/__init__.py
 accounts/__pycache__
 advertio/__pycache__
+*.sqlite3
