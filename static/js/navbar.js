@@ -9,3 +9,4 @@ function menuToggle(event) {
     profileOptions.classList.contains('hidden') ? arrowIcon.classList = 'fa fa-caret-down' :
         arrowIcon.classList = 'fa fa-caret-up';
 }
+console.log(profileBtn);

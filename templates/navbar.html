@@ -8,12 +8,15 @@
                     </li>
                 </div>
                 <div class="nav-parent-wrapper">
+                    {% if user.is_authenticated %}
                     <div class="parent-item">
-                        <li id="profileBtn" class='profile-link'>
+                        <li  class='profile-link'>
+                            <div id="profileBtn">
                             <i class='far fa-user-circle'></i>
-                            <a href=''>Hi,martin</a>
+                            <a href=''>Hi,{{request.user.username}}</a>
                             <i id="arrowIcon" class="fa fa-caret-down	
                             "></i>
+                            </div>
                             <!--fa fa-caret-up -->
 
                             <ul class='profile-options hidden'>
@@ -21,7 +24,10 @@
                                 <li>My ads</li>
                                 <li>Messages</li>
                                 <li>Settings</li>
-                                <li>Logout</li>
+                                <li class='logout-list-item'>
+                                    <a  href="{% url 'accounts:logout' %}">Logout</a>
+                                    
+                                </li>
                             </ul>
                         </li>
                     </div>
@@ -38,6 +44,22 @@
 
                         </div>
                     </div>
+                    {% else %}
+                    <div class="parent-item">
+                        <div class="button-add">
+                            <a href="{% url 'accounts:login' %}">Login</a>
+
+                        </div>
+                    </div>
+                    <div class="parent-item">
+                        <div class="button-add">
+                            <a href="{% url 'accounts:register' %}">Register</a>
+
+                        </div>
+                    </div>
+                    {% endif %}
+               
+                  
 
 
 

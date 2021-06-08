@@ -1,0 +1,22 @@
+{% extends '../base.html' %}
+{% block extrahead %}
+    <title>Advertio|Registration</title>
+{%  endblock %}
+{%  block content %}
+<h1>Login</h1>
+{% if messages %}
+    {% for message in messages %}
+     <p>{{message}}</p>
+     {% endfor %}
+{% endif %}
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p }}
+    <button type="submit">Login</button>
+    {% if form.messages %}
+        {% for  messages in form.messages %}
+            {{messages}}
+        {% endfor%}
+    {% endif %}
+</form>
+{% endblock %}

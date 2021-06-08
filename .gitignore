@@ -7,3 +7,8 @@ accounts/__init__.py
 accounts/__pycache__
 advertio/__pycache__
 *.sqlite3
+db.sqlite3
+__pycache__/*
+adverts/__pycache__
+adverts/migrations/__pycache__
+
