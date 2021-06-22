@@ -12,3 +12,4 @@ __pycache__/*
 adverts/__pycache__
 adverts/migrations/__pycache__
 
+db
