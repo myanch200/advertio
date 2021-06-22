@@ -6,6 +6,13 @@ from django.contrib.auth.forms import AuthenticationForm
 from .forms import UserRegistrationForm
 from django.contrib import messages
 from django.contrib.auth import login, authenticate,logout
+from adverts.models import Advert
+def landing_page(request):
+    adverts = Advert.objects.all()
+    context = {
+        'adverts':adverts
+    }
+    return render(request,'accounts/landing_page.html',context)
 
 def user_registration(request):
     form = UserRegistrationForm()

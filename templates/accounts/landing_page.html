@@ -1,0 +1,36 @@
+{% extends '../base.html' %}
+{% load static %}
+{% block extrahead %}
+    <title>Advertio|Profile page</title>
+    <link rel="stylesheet" href="{% static 'css/card-utils.css' %}">
+
+{%  endblock %}
+{%  block content %}
+<main>
+    <section class="landing">
+    
+    {% for advert in adverts %}
+    <div class="card-item">
+        <div class="card-header">
+            <img src="" alt="">
+        </div>
+        <div class="card-details">
+            <h3 class="item-title">{{advert.title}}</h3>
+            <div class="details-wrapper">
+                <p>Glasgow,United Kingdom </p>
+                <div class="price-arranged">
+                <p>{{advert.price}} </p>
+                <i class="far fa-heart"></i>        
+            </div>
+
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    
+    
+    </section>
+
+
+</main>
+{% endblock %}

@@ -15,8 +15,8 @@
 <div class="form-wrapper">
     <form method="POST">
         {% csrf_token %}
-        <h2>Hi , welcome back ! </h2>
-        <p>Enter your credentials to access your account </p>
+        <h2>Hi, stranger 😊 ! </h2>
+        <p>Fill in the form to create your account.  </p>
         {% for field in form %}
         <div class="field-wrapper">
             {{field.label}}

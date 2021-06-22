@@ -29,6 +29,8 @@ class Advert(models.Model):
 class AdvertImage(models.Model):
     advert = ForeignKey(Advert, related_name = 'images', on_delete=models.CASCADE)
     image = models.ImageField()
-
+    def __str__(self):
+        return f"{self.advert}-{self.image.url}"
+    
 
     
