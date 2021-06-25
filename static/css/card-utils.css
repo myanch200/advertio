@@ -1,17 +1,17 @@
 .card-item{
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    gap:20px;
     align-items: center;
     flex-direction: column;
     height: 600px;
     width: 300px;
-    background-color: rgb(250, 248, 248);
+    background-color: rgb(247, 247, 247);
     padding: 1.5rem;
     
 
 }
 .card-header img{
-    align-self: flex-start;
     width: 300px;
     height: 300px;
 }
@@ -50,6 +50,45 @@ width: 100%;        }
     width: 100%;
     min-height: 100vh;
     height: fit-content;
+    margin-left: 2rem;
+    flex-wrap:wrap-reverse;
 
 
+}
+.wishlist-button{
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+.wishlist-tooltip{
+display: none;
+width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  transform: translateX(-60px);
+  margin-bottom: 1.5rem;
+}
+.wishlist-tooltip::after{
+    content: " ";
+    position: absolute;
+    top: 100%; /* At the bottom of the tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+}
+
+.wishlist-button:hover .wishlist-tooltip{
+    display: inline;
+    bottom: 100%;
+ 
 }
