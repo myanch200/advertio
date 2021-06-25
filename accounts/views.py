@@ -7,10 +7,14 @@ from .forms import UserRegistrationForm
 from django.contrib import messages
 from django.contrib.auth import login, authenticate,logout
 from adverts.models import Advert
+from advertio.settings import MEDIA_URL
 def landing_page(request):
     adverts = Advert.objects.all()
+    
     context = {
-        'adverts':adverts
+        'adverts':adverts,
+        'MEDIA_URL':MEDIA_URL
+
     }
     return render(request,'accounts/landing_page.html',context)
 

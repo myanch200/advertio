@@ -8,16 +8,18 @@
 {%  block content %}
 <main>
     <section class="landing">
-    
+    <div class="advert-list">
     {% for advert in adverts %}
     <div class="card-item">
         <div class="card-header">
-            <img src="" alt="">
+            {% if advert.get_thumbnail%}
+            <img src="{{MEDIA_URL}}/{{advert.get_thumbnail.image}}" alt="not working boss">
+            {% endif %}
         </div>
         <div class="card-details">
             <h3 class="item-title">{{advert.title}}</h3>
             <div class="details-wrapper">
-                <p>Glasgow,United Kingdom </p>
+                <p>{{advert.location}} </p>
                 <div class="price-arranged">
                 <p>{{advert.price}} </p>
                 <i class="far fa-heart"></i>        
@@ -27,7 +29,7 @@
         </div>
     </div>
     {% endfor %}
-    
+    </div>
     
     </section>
 
