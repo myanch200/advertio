@@ -1,19 +1,21 @@
 .card-item{
     display: flex;
-    justify-content: flex-start;
-    gap:20px;
+    justify-content: space-between;
     align-items: center;
     flex-direction: column;
-    height: 600px;
+    height: fit-content;
     width: 300px;
+    margin: 1.2rem;
     background-color: rgb(247, 247, 247);
     padding: 1.5rem;
+    box-shadow: 1px 5px 16px -2px #000000;
     
 
 }
 .card-header img{
     width: 300px;
     height: 300px;
+    transform: translateY(-24px); /* I could not find another way to remove the padding of the card */
 }
 
 .card-details{
@@ -51,7 +53,7 @@ width: 100%;        }
     min-height: 100vh;
     height: fit-content;
     margin-left: 2rem;
-    flex-wrap:wrap-reverse;
+    flex-wrap:wrap;
 
 
 }
