@@ -10,14 +10,14 @@
     <section class="landing">
     <div class="advert-list">
     {% for advert in adverts %}
-    <div class="card-item">
+    <div class="card-item" >
         <div class="card-header">
             {% if advert.get_thumbnail%}
-            <img src="{{MEDIA_URL}}/{{advert.get_thumbnail.image}}" alt="not working boss">
+            <img src="{{advert.get_thumbnail.image.url}}" alt="not working boss">
             {% endif %}
         </div>
         <div class="card-details">
-            <h3 class="item-title">{{advert.title}}</h3>
+            <a href="{% url 'adverts:advert_details' advert.id %}" > <h3 class="item-title">{{advert.title}}</h3></a>
             <div class="details-wrapper">
                 <p>{{advert.location}} </p>
                 <div class="price-arranged">
@@ -30,6 +30,7 @@
             </div>
         </div>
     </div>
+    
     {% endfor %}
     </div>
     

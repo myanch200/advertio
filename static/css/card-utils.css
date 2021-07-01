@@ -45,6 +45,10 @@ width: 100%;        }
     width: 100%;
     min-height: 100vh;
     height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 
 }
 .advert-list{
@@ -52,9 +56,12 @@ width: 100%;        }
     gap:20px;
     width: 100%;
     min-height: 100vh;
+    justify-content: center;
+    align-items: center;
     height: fit-content;
     margin-left: 2rem;
-    flex-wrap:wrap;
+    flex-wrap: wrap;
+   
 
 
 }

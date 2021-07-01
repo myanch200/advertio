@@ -1,0 +1,52 @@
+{% extends '../base.html' %}
+{% load static %}
+{% block extrahead %}
+    <title>Advertio|Profile page</title>
+    <link rel="stylesheet" href="{% static 'css/advert_details.css' %}">
+
+{%  endblock %}
+{%  block content %}
+<main>
+        <section class="main-section">
+            <div class="gallery-section">
+                <div class="thumbnail-wrapper">
+                
+                    <i id="leftArrow" class="far fa-arrow-alt-circle-left" ></i> 
+                        <img id="thumbnailImg" src="{{advert.get_thumbnail.image.url}}" alt="not working boss">
+                    
+                    <i id="rightArrow" class="far fa-arrow-alt-circle-right" ></i> 
+             
+    
+                
+                </div>
+                <div class="images-wrapper">
+                {% for advert_image in advert_images %}
+                                <img class ="img-item" src="{{advert_image.image.url}}" alt="not working boss">
+
+    
+                {% endfor %}    
+                </div>
+            </div>
+            <div class="aside-section">
+                <div class="profile-section">
+                    <h3>Profile</h3>
+                    <div class="profile-header">
+                        <img class="profile-picture" src="{{request.user.profile.profile_picture.url}}" alt="" class="profile-picture">
+                        <h3>{{request.user.username}}</h3>
+                    </div>
+                    <div class="cta-wrapper">
+                        <a class="call-button" href="">Call</a>
+                        <a class="text-button" href="">Send Message</a>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+        
+        <section class="add-details">
+
+        </section>
+    </main>
+ <script src="{% static 'js/advert_details.js' %}"></script>
+
+{% endblock %}
