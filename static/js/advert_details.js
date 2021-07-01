@@ -2,7 +2,8 @@ const images = document.getElementsByClassName('img-item');
 let thumbail = document.getElementById("thumbnailImg");
 const leftArrow = document.getElementById("leftArrow");
 const rightArrow = document.getElementById("rightArrow");
-let counter = 0 ;
+const callButton = document.getElementsByClassName('call-button')[0];
+
 
 //Event Listeners
 
@@ -13,6 +14,22 @@ let counter = 0 ;
 for(i =0 ; i < images.length;i++){
     images[i].addEventListener('click',selectImage)
 }
+
+
+callButton.addEventListener('click',showPhoneNumber);
+
+
+function showPhoneNumber(event){
+    event.preventDefault();
+    phoneNumber = callButton.getAttribute('data-number');
+    if(phoneNumber === "00000000000"){
+        callButton.innerText= 'Not provided';
+        return;
+    }
+    callButton.innerText= phoneNumber;
+
+}
+
 
 function selectImage(event){
     setImage(event.target.src)
@@ -25,6 +42,7 @@ function setImage(path){
 }
 
 
+let counter = 0 ;
 
 function changeImage(event){
     let index =0;

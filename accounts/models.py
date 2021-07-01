@@ -8,7 +8,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
     bio = models.CharField(max_length= 255)
     profile_picture = models.ImageField(default= f'{MEDIA_ROOT}/default.png')
-
+    phone_number = models.CharField(max_length=15)
     def __str__(self):
         return self.user.username
 

@@ -31,11 +31,12 @@
                 <div class="profile-section">
                     <h3>Profile</h3>
                     <div class="profile-header">
-                        <img class="profile-picture" src="{{request.user.profile.profile_picture.url}}" alt="" class="profile-picture">
-                        <h3>{{request.user.username}}</h3>
+                        <img class="profile-picture" src="{{advert.author.profile.profile_picture.url}}" alt="" class="profile-picture">
+                        <h3>{{advert.author.username}}</h3>
+                        <p>{{advert.author.profile.bio}}<p>
                     </div>
                     <div class="cta-wrapper">
-                        <a class="call-button" href="">Call</a>
+                        <a class="call-button" data-number="{{advert.author.profile.phone_number}}" href="">Call</a>
                         <a class="text-button" href="">Send Message</a>
                     </div>
                 </div>
