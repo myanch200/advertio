@@ -23,6 +23,7 @@ class Advert(models.Model):
     price = models.DecimalField( decimal_places=2, max_digits=12)
     currency = models.CharField(max_length=250, choices= CURRENCY_OPTIONS)
     location = models.CharField(max_length= 300, default="Glasgow,UK")
+    uploaded = models.DateTimeField(auto_now=True)
     def __str__(self):
         return f"{self.title}-{self.author}"
     def get_thumbnail(self):

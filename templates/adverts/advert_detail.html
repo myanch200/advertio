@@ -3,6 +3,7 @@
 {% block extrahead %}
     <title>Advertio|Profile page</title>
     <link rel="stylesheet" href="{% static 'css/advert_details.css' %}">
+    <link rel="stylesheet" href="{% static 'css/card-utils.css' %}">
 
 {%  endblock %}
 {%  block content %}
@@ -42,11 +43,32 @@
                 </div>
             </div>
             
-        </section>
-        
-        <section class="add-details">
 
+        
+
+           
         </section>
+        <section class="addition-details-section">
+            <div class="add-details">
+                <div class="date-and-wishlist">
+                    <span class="date-uploaded">{{advert.uploaded}}</span>
+    
+                    <i class="far fa-heart wishlist-button">
+                        <span class="wishlist-tooltip">Add to wishlist </span>
+                    </i>
+                </div>
+                <div class="details-information">
+    
+                
+                <span class="advert-title">{{advert.title}}</span>
+                <h3>{{advert.price}} {{advert.currency}}</h3>
+                <h3>Description</h3>
+                <p>{{advert.description}}</p>
+            </div>
+        </div>
+        </section>
+     
+   
     </main>
  <script src="{% static 'js/advert_details.js' %}"></script>
 
