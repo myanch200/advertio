@@ -70,7 +70,7 @@ function changeImage(event){
     }else{
         counter++;
        
-        index = counter% images.length; //it will always return number in the range images.length
+        index = counter% images.length; //it will always return number in the range images.length .
     }
     try{
         setImage(images[index].src);
