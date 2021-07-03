@@ -48,7 +48,6 @@ function setImage(path){
 }
 
 
-let counter = 0 ;
 
 /* 
     Change image takes and event for paramater 
@@ -57,17 +56,23 @@ let counter = 0 ;
     I manage to cover some of the edge cases , but have a lot to test ,yet.
 
 */
+let counter = 0 ;
+let index =0;
+
 function changeImage(event){
-    let index =0;
+
     if(event.target=== leftArrow){
         counter--;
         if(counter < 0){
             counter = images.length -1
         }
-        
+
         index = counter;   
         
-    }else{
+    }
+    
+    
+    if(event.target===rightArrow){
         counter++;
        
         index = counter% images.length; //it will always return number in the range images.length
