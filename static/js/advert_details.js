@@ -64,13 +64,13 @@ function changeImage(event){
         if(counter < 0){
             counter = images.length -1
         }
-        index = counter;
-
+        
+        index = counter;   
         
     }else{
         counter++;
        
-        index = counter% images.length; //it will always return number in the range images.length .
+        index = counter% images.length; //it will always return number in the range images.length
     }
     try{
         setImage(images[index].src);
