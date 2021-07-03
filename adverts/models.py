@@ -39,3 +39,5 @@ class AdvertImage(models.Model):
     
 
     
+class WishList(models.Model):
+    adverts = models.ManyToManyField(Advert)
