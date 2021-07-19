@@ -1,10 +1,11 @@
 const images = document.getElementsByClassName('img-item');
-let thumbail = document.getElementById("thumbnailImg");
+const thumbail = document.getElementById("thumbnailImg");
+const thumbnailWrapper = document.getElementsByClassName('thumbnail-wrapper')[0];
 const leftArrow = document.getElementById("leftArrow");
 const rightArrow = document.getElementById("rightArrow");
 const callButton = document.getElementsByClassName('call-button')[0];
 
-
+thumbnailWrapper.disabled = true;
 //Event Listeners
 
 [leftArrow,rightArrow].forEach(item =>{
@@ -39,12 +40,11 @@ function selectImage(event){
 /*
     I created setImage function rather that invoking setAttribute in both selectImage and Change image
     In this way we don't need to know which function is called all we do is set the src attribute to be the path passed as parameter.
-
-
 */
 function setImage(path){
+
     thumbail.setAttribute('src',path)
-  
+    
 }
 
 
@@ -54,37 +54,28 @@ function setImage(path){
     and based on which arrow is pressed increments or decrements the counter variable.
     Which then we use to acces a image from the images array.
     I manage to cover some of the edge cases , but have a lot to test ,yet.
-
 */
 let counter = 0 ;
 let index =0;
 
 function changeImage(event){
 
-    if(event.target=== leftArrow){
-        counter--;
-        if(counter < 0){
-            counter = images.length -1
+        if(event.target === rightArrow){
+            counter++;
+            counter = counter % images.length;
         }
 
-        index = counter;   
-        
-    }
-    
-    
-    if(event.target===rightArrow){
-        counter++;
-       
-        index = counter% images.length; //it will always return number in the range images.length
-    }
-    try{
-        setImage(images[index].src);
-
-    }catch{
-        index = index-1
+        if(event.target === leftArrow){
+            counter--;
+            
+            if(counter < 0 ){
+                counter = images.length -1
+            }           
+        }
+        index = counter ;
         setImage(images[index].src)
 
-    }
+   
 
 
 }
