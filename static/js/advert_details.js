@@ -24,7 +24,7 @@ callButton.addEventListener('click',showPhoneNumber);
 function showPhoneNumber(event){
     event.preventDefault();
     phoneNumber = callButton.getAttribute('data-number');
-    if(phoneNumber === "00000000000"){
+    if(phoneNumber === "00000000000" || phoneNumber === ''){
         callButton.innerText= 'Not provided';
         return;
     }
