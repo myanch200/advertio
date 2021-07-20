@@ -34,6 +34,7 @@ function showPhoneNumber(event){
 
 //On click gets the target src and pass it to the setImage function
 function selectImage(event){
+
     setImage(event.target.src)
 }
 
@@ -42,8 +43,15 @@ function selectImage(event){
     In this way we don't need to know which function is called all we do is set the src attribute to be the path passed as parameter.
 */
 function setImage(path){
+    
+    thumbail.setAttribute('src',path);
+    thumbail.classList= 'fade-in';
+    //Remove the animation class once the animation is completed 
+    thumbail.onanimationend = function(){
+        thumbail.classList = '';
+    }
 
-    thumbail.setAttribute('src',path)
+    
     
 }
 

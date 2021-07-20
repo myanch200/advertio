@@ -46,13 +46,29 @@ main{
   
 }
 #leftArrow,#rightArrow{
-    cursor:pointer;
-    fill:#002F34;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 70px;
+    background-color: #002F34;
+    cursor: pointer;
+}
+#leftArrow svg ,#rightArrow svg {
+    pointer-events: none;
+    font-size: large;
 }
 #thumbnailImg{
     width: 500px;
     height: 500px;
     padding: 40px;
+    
+}
+.fade-in{
+    animation-name:  fadeIn;
+
+    animation-duration: 0.5s;
+    transition: ease-in-out;
 }
 .images-wrapper {
     width: 100%;
@@ -162,4 +178,16 @@ main{
 .advert-title{
     font-weight: bold;
     font-size: large;
+}
+
+@keyframes fadeIn {
+    0%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 0.5;
+    }
+    100%{
+        opacity: 1;
+    }
 }
