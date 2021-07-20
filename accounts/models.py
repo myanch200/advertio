@@ -17,7 +17,7 @@ class Profile(models.Model):
     bio = models.CharField(max_length= 255)
     profile_picture = models.ImageField(default= 'default.png')
     phone_number = models.CharField(max_length=15)
-    wishlist = models.ForeignKey(WishList,on_delete=CASCADE,null= True,blank= True )
+   
     def __str__(self):
         return self.user.username
 

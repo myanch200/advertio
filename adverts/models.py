@@ -1,6 +1,8 @@
 from django.db import models
 from django.db.models.fields.related import ForeignKey, ForeignObject
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch.dispatcher import receiver
 # Create your models here.
 class Category(models.Model):
     category_name = models.CharField(max_length= 250)
@@ -41,3 +43,14 @@ class AdvertImage(models.Model):
     
 class WishList(models.Model):
     adverts = models.ManyToManyField(Advert)
+    user  = models.OneToOneField(User, on_delete= models.CASCADE,null= True, blank= True)
+
+    def __str__(self):
+        return f'{self.user.username} - WishList'
+@receiver(post_save, sender=User)
+def update_user_profile(sender, instance, created, **kwargs):
+    if created:
+        WishList.objects.create(user=instance)
+        
+        
+    instance.wishlist.save()

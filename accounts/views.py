@@ -62,7 +62,7 @@ def user_logout(request):
     messages.success(request,f"{request.user.username} logged out")
     return redirect('accounts:profile')
 
-
+@login_required(login_url='accounts:login')
 def profile(request):
     profile  = Profile.objects.get(user = request.user)
     form = ProfileUpdateForm(instance= profile)

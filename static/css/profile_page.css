@@ -31,6 +31,12 @@
     flex-direction: column;
     padding: 1.2rem;
 }
+/*
+    Removing the link of the image , generate from Django
+*/
+.img-items a{
+    display: none;
+}
 .name-fields{
     display: flex;
     gap: 20px;
