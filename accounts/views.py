@@ -72,5 +72,5 @@ def profile(request):
             form.save()
             return redirect('accounts:landing')
     
-    context = {'form':form}
+    context = {'form':form,'profile':profile}
     return render(request, 'accounts/profile.html',context)

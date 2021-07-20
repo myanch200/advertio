@@ -1,13 +1,49 @@
 {% extends '../base.html' %}
+{% load static %}
 {% block extrahead %}
     <title>Advertio|Profile page</title>
+    <link rel="stylesheet" href="{% static 'css/profile_page.css' %}">
+
 {%  endblock %}
 {%  block content %}
 <h1>Profile page</h1>
-<img src="{{request.user.profile.profile_picture.url }}" width="100" height="100" alt="">
-<form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit">Save</button>
-</form>
+<section class="profile-wrapper">
+    <div class="form-wrapper">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="img-items">
+                <img src="{{profile.profile_picture.url}}" height="200" width="200" alt="">
+            {{form.profile_picture}}
+                
+            </div>
+            <div class="name-fields">
+                <div class="firstname-fields">
+                    {{form.first_name.label}}
+                    {{form.first_name}}
+                </div>
+
+                <div class="lastname-fields">
+                    {{form.last_name.label}}
+                    {{form.last_name}}
+                </div>
+
+            </div>
+            
+            <div class="phone-number">
+                {{form.phone_number.label}}
+                {{form.phone_number}}
+
+
+            </div>
+            <div class="bio">
+                {{form.bio.label}}
+                {{form.bio}}
+
+
+            </div>
+            <button class="save-button" type="submit">Save</button>
+        </form>
+    </div>
+
+</section>
 {% endblock %}
