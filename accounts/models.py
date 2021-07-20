@@ -1,3 +1,4 @@
+
 from django.db import models
 from django.contrib.auth.models import  User
 from django.db.models.deletion import CASCADE
@@ -10,10 +11,13 @@ from adverts.models import WishList
 # Create your models here.
 class Profile(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
+    first_name = models.CharField(max_length= 250, null= True, blank= True)
+    last_name = models.CharField(max_length= 250, null= True, blank= True)
+
     bio = models.CharField(max_length= 255)
-    profile_picture = models.ImageField(default= f'{MEDIA_ROOT}/default.png')
+    profile_picture = models.ImageField(default= 'default.png')
     phone_number = models.CharField(max_length=15)
-    wishlist = models.ForeignKey(WishList,on_delete=CASCADE, null= True, blank= True)
+    wishlist = models.ForeignKey(WishList,on_delete=CASCADE,null= True,blank= True )
     def __str__(self):
         return self.user.username
 
@@ -21,4 +25,9 @@ class Profile(models.Model):
 def update_user_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)
+        
+        
     instance.profile.save()
+
+
+

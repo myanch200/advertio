@@ -1,13 +1,15 @@
+from accounts.models import Profile
 from django import forms
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
-from .forms import UserRegistrationForm
+from .forms import UserRegistrationForm ,ProfileUpdateForm
 from django.contrib import messages
 from django.contrib.auth import login, authenticate,logout
 from adverts.models import Advert
 from advertio.settings import MEDIA_URL
+
 def landing_page(request):
     adverts = Advert.objects.all()
     
@@ -62,5 +64,13 @@ def user_logout(request):
 
 
 def profile(request):
-    check = "works"
-    return render(request, 'accounts/profile.html',{'check':check})
+    profile  = Profile.objects.get(user = request.user)
+    form = ProfileUpdateForm(instance= profile)
+    if request.method == 'POST':
+        form = ProfileUpdateForm(request.POST,request.FILES,instance= profile)
+        if form.is_valid:
+            form.save()
+            return redirect('accounts:landing')
+    
+    context = {'form':form}
+    return render(request, 'accounts/profile.html',context)
