@@ -36,9 +36,9 @@
     padding-bottom: 0px;
 }
 .table-item:hover{
-    outline: none;
-    -webkit-box-shadow: 1px 27px 33px -17px #000000; 
-    box-shadow: 1px 27px 33px -17px #000000;
+  
+    transform: scale(1.05);
+    
 }
 .table-item:nth-child(even){
    

@@ -22,9 +22,11 @@
                 <p>{{advert.location}} </p>
                 <div class="price-arranged">
                 <p>{{advert.price}} </p>
+                <a href='{% url "adverts:add_to_wishlist" advert.id %}'>
                 <i class="far fa-heart wishlist-button">
                     <span class="wishlist-tooltip">Add to wishlist </span>
-                </i>        
+                </i>   
+                </a>     
             </div>
 
             </div>
