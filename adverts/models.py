@@ -31,7 +31,9 @@ class Advert(models.Model):
     def get_thumbnail(self):
         return AdvertImage.objects.filter(advert = self.id)[0]
         
-    
+  
+            
+        
 
 class AdvertImage(models.Model):
     advert = ForeignKey(Advert, related_name = 'images', on_delete=models.CASCADE)

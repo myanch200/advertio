@@ -17,15 +17,17 @@ def wishlist_page(request):
     return render(request,'adverts/wishlist_page.html',context)
 
 
+
 @login_required(login_url='accounts:login')
-def remove_from_wishlist(request,pk):
-    wishlist = request.user.wishlist
-    item = wishlist.adverts.get(id = pk)
-    wishlist.adverts.remove(item)
-    return redirect('adverts:wishlist_page')
-@login_required(login_url='accounts:login')
-def add_to_wishlist(request,pk):
+def toggle_to_wishlist(request,pk):
     item = Advert.objects.get(id = pk)
     wishlist = request.user.wishlist
-    wishlist.adverts.add(item)
-    return redirect('adverts:wishlist_page')
+    if item in wishlist.adverts.all():
+        wishlist.adverts.remove(item)
+        return redirect('/')
+    else:
+        wishlist.adverts.add(item)
+        return redirect('/')
+
+
+
