@@ -1,0 +1,47 @@
+.wishlist-table{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#wishlistTable{
+    width: 800px;
+    
+    border-collapse: collapse;
+    
+    background-color: #fff;
+   
+}
+.title-row th {
+    padding: 1.2rem;
+    border-bottom: 1px solid #bdbdbdbd;
+}
+
+.table-item td{
+    border-bottom: 1px solid #bdbdbdbd;
+   
+    
+
+}
+
+.img-cell img{
+    width: 50px;
+    height: 50px;
+    
+    
+    
+}
+.table-item td{
+    padding-bottom: 0px;
+}
+.table-item:hover{
+    outline: none;
+    -webkit-box-shadow: 1px 27px 33px -20px #000000; 
+    box-shadow: 1px 27px 33px -20px #000000;
+}
+.table-item:nth-child(even){
+    background-color: #c0f8e1; /*#0bda84;*/
+    color: black;
+}
+
