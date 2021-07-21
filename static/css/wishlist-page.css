@@ -37,10 +37,11 @@
 }
 .table-item:hover{
     outline: none;
-    -webkit-box-shadow: 1px 27px 33px -20px #000000; 
-    box-shadow: 1px 27px 33px -20px #000000;
+    -webkit-box-shadow: 1px 27px 33px -17px #000000; 
+    box-shadow: 1px 27px 33px -17px #000000;
 }
 .table-item:nth-child(even){
+   
     background-color: #c0f8e1; /*#0bda84;*/
     color: black;
 }
