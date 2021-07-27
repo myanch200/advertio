@@ -5,9 +5,7 @@ let toggleWishlistButtons = document.getElementsByClassName('toggle-wishlist');
 for(let i = 0; i <= toggleWishlist.length;i++){
     toggleWishlistButtons[i].addEventListener("click",toggleWishlist);
 }
-let wishlistToggleBtn = document.getElementById("toggleWishlistBtn");
-wishlistToggleBtn.addEventListener("click",toggleWishlist);
 
 
 
-toggleWishlistButtons();
+

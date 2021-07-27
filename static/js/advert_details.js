@@ -1,10 +1,15 @@
+import {toggleWishlist} from "./wishlist_utils.js"
+
 const images = document.getElementsByClassName('img-item');
 const thumbail = document.getElementById("thumbnailImg");
 const thumbnailWrapper = document.getElementsByClassName('thumbnail-wrapper')[0];
 const leftArrow = document.getElementById("leftArrow");
 const rightArrow = document.getElementById("rightArrow");
 const callButton = document.getElementsByClassName('call-button')[0];
+const wishlistToggleBtn = document.getElementById("toggleWishlistBtn");
 
+let counter = 0 ;
+let index =0;
 thumbnailWrapper.disabled = true;
 //Event Listeners
 
@@ -13,12 +18,15 @@ thumbnailWrapper.disabled = true;
 })
 
 //Adding event listener for each of the images
-for(i =0 ; i < images.length;i++){
-    images[i].addEventListener('click',selectImage)
+for( let j = 0 ; j < images.length;j++){
+    images[j].addEventListener('click',selectImage)
 }
 
 //Event listener for the call button
 callButton.addEventListener('click',showPhoneNumber);
+
+
+wishlistToggleBtn.addEventListener("click",toggleWishlist);
 
 // On click if phone number is different from our default show the number else show Not provided
 function showPhoneNumber(event){
@@ -50,9 +58,6 @@ function setImage(path){
     thumbail.onanimationend = function(){
         thumbail.classList = '';
     }
-
-    
-    
 }
 
 
@@ -63,8 +68,7 @@ function setImage(path){
     Which then we use to acces a image from the images array.
     I manage to cover some of the edge cases , but have a lot to test ,yet.
 */
-let counter = 0 ;
-let index =0;
+
 
 function changeImage(event){
 

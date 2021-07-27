@@ -74,7 +74,7 @@
                 <div class="date-and-wishlist">
                     <span class="date-uploaded">{{advert.uploaded}}</span>
     
-                    <button data-id={{advert.id}} type="submit" class="toggle-wishlist" href='{% url "adverts:toggle_to_wishlist" advert.id %}'>
+                    <button data-id={{advert.id}} type="submit" id="toggleWishlistBtn" class="toggle-wishlist" href='{% url "adverts:toggle_to_wishlist" advert.id %}'>
                         {% if advert in request.user.wishlist.adverts.all %}
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M12 4.24801C8.852 -1.15399 0 0.423009 0 7.19201C0 11.853 5.571 16.619 12 23C18.43 16.619 24 11.853 24 7.19201C24 0.40001 15.125 -1.11399 12 4.24801Z" fill="#CC3030"/>
@@ -108,7 +108,11 @@
      
    
     </main>
- <script src="{% static 'js/advert_details.js' %}"></script>
- <script src="{% static 'js/base.js' %}"></script>
+
+{% endblock %}
+{% block extra_scripts  %} 
+<script type="module" src="{% static 'js/wishlist_utils.js' %}"></script>
+
+<script src="{% static 'js/advert_details.js' %}" type="module"></script>
 
 {% endblock %}
