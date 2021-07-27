@@ -78,9 +78,30 @@ body {
     animation-name: fadeIn;
     animation-duration: 0.5s;
 }
-
+#profileBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:5px;
+}
+.arrowIcon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
 .hidden {
     display: none;
+}
+.nav-wishlist{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:5px;
+}
+.nav-wishlist svg{
+    width: 20px;
+    height: 20px;
 }
 
 .button-add {
@@ -102,7 +123,7 @@ body {
 }
 
 .button-add:hover {
-    background-color: #2662FF
+    background-color: #2662FF;
     color: #fff;
 }
 

@@ -1,6 +1,5 @@
 const images = document.getElementsByClassName('img-item');
 const thumbail = document.getElementById("thumbnailImg");
-const thumbnailWrapper = document.getElementsByClassName('thumbnail-wrapper')[0];
 const leftArrow = document.getElementById("leftArrow");
 const rightArrow = document.getElementById("rightArrow");
 

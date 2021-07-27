@@ -1,8 +1,7 @@
 import {toggleWishlist} from "./wishlist_utils.js"
-
-
 const callButton = document.getElementsByClassName('call-button')[0];
 const wishlistToggleBtn = document.getElementById("toggleWishlistBtn");
+const thumbnailWrapper = document.getElementsByClassName('thumbnail-wrapper')[0];
 
 
 thumbnailWrapper.disabled = true;
