@@ -65,10 +65,16 @@ width: 100%;        }
 
 
 }
-.wishlist-button{
+.toggle-wishlist{
     display: inline-block;
     position: relative;
     cursor: pointer;
+    outline: none;
+    border: none;
+    color: transparent;
+}
+.toggle-wishlist svg{
+    pointer-events: none;
 }
 .wishlist-tooltip{
 display: none;
@@ -97,8 +103,21 @@ width: 120px;
     border-color: black transparent transparent transparent;
 }
 
-.wishlist-button:hover .wishlist-tooltip{
+.toggle-wishlist:hover .wishlist-tooltip{
     display: inline;
     bottom: 100%;
  
+}
+.heart-active{
+    animation: shadowIn 0.3s ;
+}
+
+
+@keyframes shadoIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }

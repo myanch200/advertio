@@ -1,3 +1,4 @@
+from django.http.response import JsonResponse
 from accounts.models import Profile
 from django import forms
 from django.shortcuts import render,redirect
@@ -74,3 +75,14 @@ def profile(request):
     
     context = {'form':form,'profile':profile}
     return render(request, 'accounts/profile.html',context)
+
+
+
+def check_username(request,data):
+    res= {}
+    if not data:
+        return JsonResponse({"error": "not valid username"})
+    res['exists'] = User.objects.filter(username = data).exists()
+    print(res)
+    return JsonResponse(res)
+    

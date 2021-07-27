@@ -13,7 +13,7 @@
 {% endif %}
 <div class="form-section">
 <div class="form-wrapper">
-    <form method="POST">
+    <form method="POST" autocomplete="off">
         {% csrf_token %}
         <h2>Hi, stranger 😊 ! </h2>
         <p>Fill in the form to create your account.  </p>
@@ -21,6 +21,9 @@
         <div class="field-wrapper">
             {{field.label}}
             {{field}}
+            {% if forloop.counter0 == 0 %}
+            <span id="resultSpan"></span>
+            {% endif %}
         </div>
         {% endfor %}
         <button class="auth-cta" type="submit">Register</button>
@@ -34,3 +37,8 @@
 </div>
 
 {% endblock %}
+
+{% block extra_scripts %}
+ <script src="{% static 'js/authenthication.js' %}"></script>
+
+{% endblock%}

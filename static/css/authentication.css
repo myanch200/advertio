@@ -52,3 +52,11 @@
     font-weight: bold;
     cursor: pointer;
 }
+.username-taken{
+    color: #d9534f
+    ;
+}
+.username-available{
+    color: #5cb85c
+    ;
+}

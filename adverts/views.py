@@ -1,3 +1,4 @@
+from django.http.response import JsonResponse
 from django.shortcuts import redirect, render
 from .models import Advert,AdvertImage, WishList
 from django.contrib.auth.decorators import login_required
@@ -22,12 +23,18 @@ def wishlist_page(request):
 def toggle_to_wishlist(request,pk):
     item = Advert.objects.get(id = pk)
     wishlist = request.user.wishlist
+    message = ""
     if item in wishlist.adverts.all():
         wishlist.adverts.remove(item)
-        return redirect('/')
+        message = "Advert removed"
+        
     else:
         wishlist.adverts.add(item)
-        return redirect('/')
+        message = "Advert added"
+
+        
+    return JsonResponse({"message":message})
 
 
-
+def get_some_data(request):
+    return JsonResponse({'data':'works'})
