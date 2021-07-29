@@ -45,4 +45,6 @@
     background-color: #c0f8e1; /*#0bda84;*/
     color: black;
 }
-
+.wishlist-remove svg{
+    pointer-events: none;
+}
