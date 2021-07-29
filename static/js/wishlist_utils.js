@@ -1,6 +1,5 @@
 import { getCookie } from "./utilities.js";
 const csrftoken = getCookie('csrftoken');
-let navbarCounter = document.getElementById("navbarCounter");
 
 
 export function toggleWishlist(event){

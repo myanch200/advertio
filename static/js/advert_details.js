@@ -1,8 +1,7 @@
 import {toggleWishlist} from "./wishlist_utils.js"
-const callButton = document.getElementsByClassName('call-button')[0];
 const wishlistToggleBtn = document.getElementById("toggleWishlistBtn");
 const thumbnailWrapper = document.getElementsByClassName('thumbnail-wrapper')[0];
-
+const callButton = document.getElementById("callButton")
 
 thumbnailWrapper.disabled = true;
 //Event Listeners
@@ -17,9 +16,10 @@ wishlistToggleBtn.addEventListener("click",toggleWishlist);
 
 // On click if phone number is different from our default show the number else show Not provided
 function showPhoneNumber(event){
+    let blanks = ["00000000000",'',null]
     event.preventDefault();
-    phoneNumber = callButton.getAttribute('data-number');
-    if(phoneNumber === "00000000000" || phoneNumber === ''){
+    let phoneNumber = callButton.getAttribute('data-number');
+    if(phoneNumber in blanks){
         callButton.innerText= 'Not provided';
         return;
     }
