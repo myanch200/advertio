@@ -33,7 +33,7 @@ def toggle_to_wishlist(request,pk):
         message = "Advert added"
 
         
-    return JsonResponse({"message":message})
+    return JsonResponse({"message":message,"wishlistCount":wishlist.count_adds()})
 
 
 def get_some_data(request):

@@ -1,15 +1,6 @@
 import { getCookie } from "./utilities.js";
 const csrftoken = getCookie('csrftoken');
-
-
-
-
-
-
-
-
-
-
+let navbarCounter = document.getElementById("navbarCounter");
 
 
 export function toggleWishlist(event){
@@ -46,8 +37,9 @@ export function toggleWishlist(event){
             <span class="wishlist-tooltip">Remove from wishlist  </span>
                                        </svg>`
            }
-           
 
+           
+           document.getElementById("navbarCounter").innerText = data.wishlistCount;
         },
         failure: function(data) { 
             alert('Got an error dude');

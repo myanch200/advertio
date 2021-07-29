@@ -98,11 +98,35 @@ body {
     justify-content: center;
     align-items: center;
     gap:5px;
+    position: relative;
+
 }
-.nav-wishlist svg{
-    width: 20px;
-    height: 20px;
-}
+
+.wishlist-counter{
+    
+        width: 20px;
+        height: 20px;
+      background-color: #2769ff;
+      color: #fff;
+      text-align: center;
+      padding: 5px 0;
+      border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 400;
+        font-size: small;
+      /* Position the tooltip text - see examples below! */
+      position: absolute;
+      z-index: 1;
+      left: 50%;
+      transform: translate(-35px,-5px);
+ 
+
+      margin-bottom: 1.5rem;
+    }
+    
+    
 
 .button-add {
     background-color: white;

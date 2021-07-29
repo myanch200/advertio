@@ -49,6 +49,13 @@ class WishList(models.Model):
 
     def __str__(self):
         return f'{self.user.username} - WishList'
+    
+    def count_adds(self):
+        return self.adverts.count()
+
+
+
+
 @receiver(post_save, sender=User)
 def update_user_profile(sender, instance, created, **kwargs):
     if created:
