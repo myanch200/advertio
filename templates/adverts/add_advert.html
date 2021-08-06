@@ -1,0 +1,44 @@
+{% extends '../base.html' %}
+{% load static %}
+{% block extrahead %}
+    <title>Advertio|Profile page</title>
+    <link rel="stylesheet" href="{% static 'css/wishlist-page.css' %}">
+
+{%  endblock %}
+{%  block content %}
+<section class="add_advert">
+    <form method="post" enctype="multipart/form-data">
+       {% csrf_token %}
+    {% for hidden in postForm.hidden_fields %}
+        {{ hidden }}
+    {% endfor %}
+
+        {{ form.as_p}}
+
+    {{ formset.management_form }}
+    {% for form in formset %}
+        {{ form }}
+    {% endfor %}
+
+
+        <button type="submit">Submit</button>
+{% if form.errors %}
+    {% for error in form.errors %}
+        <p>{{ error }}</p>
+    {% endfor %}
+
+{% endif %}
+
+
+    </form>
+
+</section>
+
+
+{% endblock %}
+{% block extra_scripts%}
+<script src="{% static 'js/wishlist_utils.js' %}" type="module"></script>
+<script src="{% static 'js/base.js' %}" type="module"></script>
+
+
+{% endblock %}
