@@ -2,25 +2,46 @@
 {% load static %}
 {% block extrahead %}
     <title>Advertio|Profile page</title>
-    <link rel="stylesheet" href="{% static 'css/wishlist-page.css' %}">
+    <link rel="stylesheet" href="{% static 'css/add_advert.css' %}">
 
 {%  endblock %}
 {%  block content %}
 <section class="add_advert">
-    <form method="post" enctype="multipart/form-data">
+    <form id="addAdvertForm" method="post" enctype="multipart/form-data">
        {% csrf_token %}
     {% for hidden in postForm.hidden_fields %}
         {{ hidden }}
     {% endfor %}
 
-        {{ form.as_p}}
+       <div class="form-field">
+           {{ form.title.label }}
+           {{ form.title }}
+           {{ form.category.label }}
+
+           {{ form.category }}
+       </div>
+        <div class="form-field">
 
     {{ formset.management_form }}
     {% for form in formset %}
-        {{ form }}
+                {{ form }}
+
     {% endfor %}
 
+        </div>
+    <div class="form-field">
+        {{ form.description.label }}
+        {{ form.description }}
 
+    </div>
+    <div class="form-field">
+        {{ form.price.label }}
+
+        {{ form.price }}
+        {{ form.currency.label }}
+
+        {{ form.currency }}
+    </div>
         <button type="submit">Submit</button>
 {% if form.errors %}
     {% for error in form.errors %}

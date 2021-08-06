@@ -50,7 +50,7 @@ def get_some_data(request):
 def add_advert(request):
     user = request.user
     form = AddAdvertForm()
-    ImageFormSet = formset_factory(AdvertImageForm, extra=3)
+    ImageFormSet = formset_factory(AdvertImageForm, extra=5)
     formset = ImageFormSet()
     if request.method == "POST":
         form = AddAdvertForm(request.POST)
