@@ -42,7 +42,11 @@
 
         {{ form.currency }}
     </div>
-        <button type="submit">Submit</button>
+    <div class="button-wrapper">
+        <a href="" class="cancel-button">Cancel</a>
+        <button type="submit" class="add_button">Submit</button>
+
+    </div>
 {% if form.errors %}
     {% for error in form.errors %}
         <p>{{ error }}</p>

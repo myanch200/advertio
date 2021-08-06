@@ -14,7 +14,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-        gap:50px
+        gap:50px;
+
 
 }
 .form-field{
@@ -23,5 +24,52 @@
     background: #FCFCFC;
     width: 80%;
     height: 300px;
+        padding-left: 1rem;
+    justify-content: center;
+    align-items: flex-start;
 
+
+}
+.form-field input[type = text] ,input[type = number],textarea ,select {
+    background: #F2F4F5;
+    border: none;
+
+}
+#id_title, #id_category,#id_price,#id_currency{
+    padding: 0.8rem;
+    width: 60%;
+    margin: 1rem;
+
+}
+#id_description{
+    width: 70%;
+}
+.button-wrapper{
+    height: 100px;
+    background: #FCFCFC;
+    width: 80%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    gap: 30px;
+    padding: 2rem;
+
+}
+.cancel-button{
+    color: #e63946;
+    font-size: large;
+}
+.add_button{
+width: 100px;
+    height:40px;
+    background-color: #F2F4F5;
+    border: 0.5px solid #2662FF;
+    font-weight: normal;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+}
+.add_button:hover {
+    background-color: #2662FF;
+    border: 0.5px solid #f2f4f5;
+    color: white;
 }
