@@ -8,10 +8,14 @@
 {%  block content %}
 
 <section class="add_advert">
+    <div id="alertBox"  class="alert" >
+
+    </div>
     <form action="/file-upload"
-      class="dropzone form-field dz"
+      class="dropzone dz"
       id="myDropzone">
         {% csrf_token %}
+
     </form>
     <form id="addAdvertForm" action="/" method="post"  >
        {% csrf_token %}

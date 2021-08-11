@@ -8,13 +8,18 @@ const location = document.getElementById("id_location");
 const imagesSubmit = document.getElementById("submitImages");
 const advert_csrf = document.getElementsByName('csrfmiddlewaretoken')[1];
 const url = ""
-
+const alertBox = document.getElementById("alertBox");
+alertBox.innerHTML = "";
 
 
 
 
 Dropzone.autoDiscover = false;
 
+function handleAlert(type,text){
+    alertBox.classList += ` ${type}`;
+    alertBox.innerText = text;
+}
 const myDropze = new Dropzone("#myDropzone",{
     url: "/ads/drop_image",
     maxFiles: 10,
@@ -50,7 +55,11 @@ advertForm.addEventListener('submit', e=>{
             console.log(response)
             const sText = `${response.message}`
             myDropze.processQueue()
-            window.location.replace("/")
+            handleAlert("success", sText)
+            setTimeout(()=>{
+                            window.location.replace("/")
+
+            },5000)
 
         },
         error: function(error){

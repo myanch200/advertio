@@ -1,0 +1,17 @@
+.alert{
+    width: 80%;
+    height: 50px;
+    margin-bottom: 2rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.success{
+    background-color: #d4edd9;
+    color: #155724;
+}
+.danger{
+     background-color: #f8d7d9;
+    color: #721c23;
+}
