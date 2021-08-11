@@ -75,3 +75,14 @@ width: 100px;
     border: 0.5px solid #f2f4f5;
     color: white;
 }
+.dz{
+    border: 2px dashed #888888 ;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    height: fit-content;
+}
+.dz:hover{
+    background-color: #eefffd;
+
+}
