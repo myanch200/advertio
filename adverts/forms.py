@@ -6,7 +6,7 @@ class AddAdvertForm(forms.ModelForm):
 
     class Meta:
         model = Advert
-        fields = '__all__'
+        fields = ['title','description','category','price','currency','location']
         exclude = ['author', 'slug', ]
 
 

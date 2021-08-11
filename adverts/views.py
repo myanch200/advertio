@@ -46,27 +46,29 @@ def get_some_data(request):
     return JsonResponse({'data': 'works'})
 
 
-@login_required(login_url='accounts:login')
+@login_required(login_url="accounts:login")
 def add_advert(request):
-    user = request.user
     form = AddAdvertForm()
-    ImageFormSet = formset_factory(AdvertImageForm, extra=5)
-    formset = ImageFormSet()
-    if request.method == "POST":
-        form = AddAdvertForm(request.POST)
-        formset = ImageFormSet(request.POST, request.FILES)
-        images = request.FILES.getlist("new_images")
-        if form.is_valid() and formset.is_valid():
+    if request.is_ajax() and request.method == "POST":
+        form = AddAdvertForm(data=request.POST)
+        print(request.POST)
+        if form.is_valid():
             advert = form.save(commit=False)
-            advert.author = user
+            advert.author = request.user
             advert.slug = slugify(advert.title)
             advert.save()
-            for f in formset.cleaned_data:
-                if f:
-                    image = f['image']
-                    photo = AdvertImage(advert=advert, image=image)
-                    photo.save()
+            return JsonResponse({"message": "Advert added"})
+        else:
+            errors = form.errors.as_json()
+            return JsonResponse({"message" :errors}, status= 400  )
 
-            return redirect("accounts:landing")
+    return render(request, "adverts/add_advert.html", {"form": form})
 
-    return render(request, "adverts/add_advert.html", {"form": form,"formset":formset})
+
+@login_required(login_url="accounts:login")
+def dropzone_image(request):
+    if request.method == 'POST':
+        image = request.FILES.get("file")
+        advert = Advert.objects.filter(author=request.user).order_by('-uploaded')[0]
+        AdvertImage.objects.create(image=image, advert=advert)
+        return JsonResponse({"message": "success"})
