@@ -57,7 +57,7 @@ advertForm.addEventListener('submit', e=>{
             myDropze.processQueue()
             handleAlert("success", sText)
             setTimeout(()=>{
-                            window.location.replace("/")
+                            window.location.replace(`/ads/details/${response.advert_id}`)
 
             },5000)
 

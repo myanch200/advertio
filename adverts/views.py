@@ -51,13 +51,16 @@ def add_advert(request):
     form = AddAdvertForm()
     if request.is_ajax() and request.method == "POST":
         form = AddAdvertForm(data=request.POST)
+        data = {}
         print(request.POST)
         if form.is_valid():
             advert = form.save(commit=False)
             advert.author = request.user
             advert.slug = slugify(advert.title)
             advert.save()
-            return JsonResponse({"message": "Advert added"})
+            data['advert_id'] = advert.id
+            data['message'] = f"{advert.title} added !"
+            return JsonResponse(data)
         else:
             errors = form.errors.as_json()
             return JsonResponse({"message" :errors}, status= 400  )
