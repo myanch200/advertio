@@ -19,7 +19,7 @@
             {% endif %}
         </div>
         <div class="card-details">
-            <a href="{% url 'adverts:advert_details' advert.id %}" > <h3 class="item-title">{{advert.title}}</h3></a>
+            <a class="item-title" href="{% url 'adverts:advert_details' advert.id %}" > <h3>{{advert.title}}</h3></a>
             <div class="details-wrapper">
                 <p>{{advert.location}} </p>
                 <div class="price-arranged">

@@ -65,6 +65,14 @@ width: 100%;        }
 
 
 }
+.item-title{
+   color: #002f34;
+    text-decoration: none;
+}
+.item-title:hover{
+    background-color: #002F34;
+    color: white;
+}
 .toggle-wishlist{
     display: inline-block;
     position: relative;
