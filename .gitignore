@@ -11,5 +11,5 @@ db.sqlite3
 __pycache__/*
 adverts/__pycache__
 adverts/migrations/__pycache__
-
+.env
 db
