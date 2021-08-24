@@ -9,6 +9,10 @@
 <main>
     <section class="landing">
     <div class="advert-list">
+    <form method="GET" action="{% url 'adverts:search' %}">
+    {{search_form}}
+        <button type="submit">Search</button>
+    </form>
     {% csrf_token %}
 
     {% for advert in adverts %}

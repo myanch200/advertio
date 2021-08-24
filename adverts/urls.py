@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import advert_details, wishlist_page, toggle_to_wishlist, get_some_data, add_advert, dropzone_image
+from .views import advert_details, wishlist_page, toggle_to_wishlist, get_some_data, add_advert, dropzone_image, search
 
 app_name = "adverts"
 
@@ -9,6 +9,7 @@ urlpatterns = [
     path('toggle_to_wishlist/<int:pk>/', toggle_to_wishlist, name='toggle_to_wishlist'),
     path('get_some_data', get_some_data, name='get_some_data'),
     path('add_advert', add_advert, name="add_advert"),
-    path('drop_image',dropzone_image,name="drop_image")
+    path('drop_image',dropzone_image,name="drop_image"),
+    path('search', search, name="search")
 
 ]

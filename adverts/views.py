@@ -6,8 +6,8 @@ from django.forms import formset_factory
 
 from .models import Advert, AdvertImage, WishList
 from django.contrib.auth.decorators import login_required
-from .forms import AddAdvertForm, AdvertImageForm
-
+from .forms import AddAdvertForm, AdvertImageForm, AdvertSearchForm
+from django.contrib.postgres.search import TrigramSimilarity, TrigramDistance
 
 # Create your views here.
 def advert_details(request, id):
@@ -75,3 +75,15 @@ def dropzone_image(request):
         advert = Advert.objects.filter(author=request.user).order_by('-uploaded')[0]
         AdvertImage.objects.create(image=image, advert=advert)
         return JsonResponse({"message": "success"})
+
+def search(request):
+    form = AdvertSearchForm()
+    results = []
+    if 'q' in request.GET:
+        form = AdvertSearchForm(request.GET)
+        if form.is_valid():
+            q = form.cleaned_data['q']
+            results = Advert.objects.filter(title__search=q)
+            print(results)
+    return render(request,'adverts/search.html', {"results": results})
+

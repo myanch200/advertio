@@ -10,14 +10,14 @@ from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 from adverts.models import Advert
 from advertio.settings import MEDIA_URL
-
+from adverts.forms import AdvertSearchForm
 
 def landing_page(request):
     adverts = Advert.objects.all()
-
+    search_form = AdvertSearchForm()
     context = {
         'adverts': adverts,
-        'MEDIA_URL': MEDIA_URL
+        'search_form':search_form
 
     }
     return render(request, 'accounts/landing_page.html', context)

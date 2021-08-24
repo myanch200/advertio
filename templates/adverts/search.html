@@ -1,0 +1,8 @@
+<h1>Search</h1>
+
+
+{% for result in results %}
+    {{ result.title }}
+{% empty %}
+    <p>Sorry nothing found</p>
+{% endfor %}
