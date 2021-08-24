@@ -7,7 +7,7 @@ from django.forms import formset_factory
 from .models import Advert, AdvertImage, WishList
 from django.contrib.auth.decorators import login_required
 from .forms import AddAdvertForm, AdvertImageForm, AdvertSearchForm
-from django.contrib.postgres.search import TrigramSimilarity, TrigramDistance
+from django.contrib.postgres.search import TrigramSimilarity
 
 # Create your views here.
 def advert_details(request, id):
@@ -83,7 +83,8 @@ def search(request):
         form = AdvertSearchForm(request.GET)
         if form.is_valid():
             q = form.cleaned_data['q']
-            results = Advert.objects.filter(title__search=q)
+            results = Advert.objects.annotate(similarity=TrigramSimilarity('title', q),).filter(similarity__gte=0.3).order_by('-similarity')
+
             print(results)
     return render(request,'adverts/search.html', {"results": results})
 

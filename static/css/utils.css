@@ -15,3 +15,30 @@
      background-color: #f8d7d9;
     color: #721c23;
 }
+.search-form{
+    display: flex;
+
+}
+.search-form input[type='text']{
+    width: 500px;
+    height: 60px;
+    border: none;
+    outline: none;
+    padding-left: 2rem;
+
+
+
+}
+.search-form button{
+    background-color: white;
+    border:none;
+    border-left: 1px solid #444444;
+    color: black;
+    width: 100px;
+
+    cursor: pointer;
+}
+.search-form button:hover{
+    background-color: #002F34;
+    color: white;
+}

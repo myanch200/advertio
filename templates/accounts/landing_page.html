@@ -3,16 +3,18 @@
 {% block extrahead %}
     <title>Advertio|Profile page</title>
     <link rel="stylesheet" href="{% static 'css/card_utils.css' %}">
+    <link rel="stylesheet" href="{% static 'css/utils.css' %}">
 
 {%  endblock %}
 {%  block content %}
 <main>
     <section class="landing">
-    <div class="advert-list">
-    <form method="GET" action="{% url 'adverts:search' %}">
+    <form  class="search-form" method="GET" action="{% url 'adverts:search' %}">
     {{search_form}}
         <button type="submit">Search</button>
     </form>
+    <div class="advert-list">
+
     {% csrf_token %}
 
     {% for advert in adverts %}

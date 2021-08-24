@@ -20,6 +20,8 @@ class AdvertSearchForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['q'].label = 'Search For'
+        self.fields['q'].label = ''
         self.fields['q'].widget.attrs.update(
-            {'class': 'form-control'})
+            {'class': 'form-control',
+             'placeholder': 'Search from thousands of ads',
+             'autocomplete':"off"})
