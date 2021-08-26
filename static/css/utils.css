@@ -50,3 +50,34 @@
     width: 100%;
 
 }
+.step-links{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+.step-links a{
+    text-decoration: none;
+    color: black;
+}
+.page-numbers{
+    display: flex;
+    gap: 10px;
+    margin: 0 10px 0 10px;
+}
+.page-numbers {
+    list-style: none;
+
+
+}
+.pg-numbers{
+        padding: 0.5em;
+        background-color: white;
+}
+.pg-current {
+    background-color: #2769ff;
+}
+
+
+.pg-current a {
+color: white;}
