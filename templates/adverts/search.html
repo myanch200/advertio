@@ -1,10 +1,67 @@
-<h1>Search</h1>
+{% extends '../base.html' %}
+{% load static %}
+{% block extrahead %}
+    <title>Advertio|Profile page</title>
+    <link rel="stylesheet" href="{% static 'css/card_utils.css' %}">
+    <link rel="stylesheet" href="{% static 'css/utils.css' %}">
+
+{%  endblock %}
+{%  block content %}
+<main>
+    <section class="landing">
 
 
-{% for result in page_obj %}
-    {{ result.title }}
+    {% csrf_token %}
 
-    <div class="pagination">
+    {% for advert in page_obj %}
+    <div class="card-item" >
+        <div class="card-header">
+            {% if advert.get_thumbnail%}
+                <img src="{{advert.get_thumbnail.image.url}}" alt="not working boss">
+            {% endif %}
+        </div>
+        <div class="card-details">
+            <a class="item-title" href="{% url 'adverts:advert_details' advert.id %}" > <h3>{{advert.title}}</h3></a>
+            <div class="details-wrapper">
+                <p>{{advert.location}} </p>
+                <div class="price-arranged">
+                <p>{{advert.price}} </p>
+                <button data-id={{advert.id}} type="submit" class="toggle-wishlist">
+                {% if advert in request.user.wishlist.adverts.all %}
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 4.24801C8.852 -1.15399 0 0.423009 0 7.19201C0 11.853 5.571 16.619 12 23C18.43 16.619 24 11.853 24 7.19201C24 0.40001 15.125 -1.11399 12 4.24801Z" fill="#CC3030"/>
+                        <span class="wishlist-tooltip">Remove from wishlist</span>
+                    </svg>
+                {% else %}
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0)">
+                        <path d="M17.516 3C19.898 3 22.003 4.564 22.003 7.712C22.003 12.675 15.475 16.009 12 19.647C8.52501 16.009 1.99801 12.676 1.99801 7.713C1.99801 4.658 4.00601 3 6.48501 3C9.66501 3 11.331 6.644 12 8.312C12.667 6.646 14.333 3 17.516 3ZM17.516 1C15.342 1 13.17 2.062 12 4.419C10.83 2.062 8.65801 1 6.48501 1C3.08201 1 0.00100708 3.39 0.00100708 7.689C0.00100708 14.959 9.90401 18.627 12 23C14.096 18.627 24 14.959 24 7.689C24 3.103 20.586 1 17.516 1Z" fill="#696868"/>
+                    </g>
+                    <defs>
+                    <clipPath id="clip0">
+                    <rect width="24" height="24" fill="white"/>
+                    </clipPath>
+                    </defs>
+                    <span class="wishlist-tooltip">Add to wishlist </span>
+                </svg>
+                {% endif %}
+                </button>
+            </div>
+
+            </div>
+        </div>
+    </div>
+
+{% empty %}
+    <p>Sorry nothing found</p>
+    {% endfor %}
+    </div>
+
+
+
+
+
+  <div class="pagination">
     <span class="step-links">
         {% if page_obj.has_previous %}
             <a href="?q={{ query }}&page=1">&laquo; first</a>
@@ -21,7 +78,15 @@
         {% endif %}
     </span>
 </div>
-    <br>
-{% empty %}
-    <p>Sorry nothing found</p>
-{% endfor %}
+    </section>
+
+
+</main>
+{% endblock %}
+{% block extra_scripts %}
+<script type="module" src="{% static 'js/wishlist_utils.js' %}"></script>
+<script src="{% static 'js/base.js' %}" type="module"></script>
+
+{% endblock%}
+
+

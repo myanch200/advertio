@@ -13,3 +13,4 @@ adverts/__pycache__
 adverts/migrations/__pycache__
 .env
 db
+static/images/*
