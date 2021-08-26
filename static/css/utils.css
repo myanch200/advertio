@@ -17,6 +17,7 @@
 }
 .search-form{
     display: flex;
+    margin-bottom: 2rem;
 
 }
 .search-form input[type='text']{

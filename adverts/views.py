@@ -1,13 +1,16 @@
+from django.core.paginator import Paginator
 from django.http.response import JsonResponse
 from django.shortcuts import redirect, render
 from django.urls import reverse, reverse_lazy
 from django.utils.text import slugify
 from django.forms import formset_factory
+from django.views.generic import ListView
 
 from .models import Advert, AdvertImage, WishList
 from django.contrib.auth.decorators import login_required
 from .forms import AddAdvertForm, AdvertImageForm, AdvertSearchForm
 from django.contrib.postgres.search import TrigramSimilarity
+
 
 # Create your views here.
 def advert_details(request, id):
@@ -63,7 +66,7 @@ def add_advert(request):
             return JsonResponse(data)
         else:
             errors = form.errors.as_json()
-            return JsonResponse({"message" :errors}, status= 400  )
+            return JsonResponse({"message": errors}, status=400)
 
     return render(request, "adverts/add_advert.html", {"form": form})
 
@@ -76,15 +79,25 @@ def dropzone_image(request):
         AdvertImage.objects.create(image=image, advert=advert)
         return JsonResponse({"message": "success"})
 
+
 def search(request):
     form = AdvertSearchForm()
     results = []
+    contex = {}
     if 'q' in request.GET:
         form = AdvertSearchForm(request.GET)
         if form.is_valid():
+            page = request.GET.get('page', 1)
             q = form.cleaned_data['q']
-            results = Advert.objects.annotate(similarity=TrigramSimilarity('title', q),).filter(similarity__gte=0.3).order_by('-similarity')
+            results = Advert.objects.annotate(similarity=TrigramSimilarity('title', q), ).filter(
+                similarity__gte=0.05).order_by('-similarity')
+            paginator = Paginator(results, 1)
+            adverts = paginator.page(page)
+            contex = {
+                "page_obj":adverts,
+                'query': q
+            }
+            return render(request,'adverts/search.html',contex)
+    return render(request, 'adverts/search.html')
 
-            print(results)
-    return render(request,'adverts/search.html', {"results": results})
 

@@ -22,7 +22,7 @@ class Advert(models.Model):
         ('BGN', 'BGN'),
     )
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    title = models.CharField(max_length=300)
+    title = models.CharField(max_length=1000)
     description = models.TextField()
     slug = models.SlugField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
