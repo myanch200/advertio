@@ -70,6 +70,7 @@ def add_advert(request):
 
     return render(request, "adverts/add_advert.html", {"form": form})
 
+
 """Consiming the images from dropzone"""
 @login_required(login_url="accounts:login")
 def dropzone_image(request):
